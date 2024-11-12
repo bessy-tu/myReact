@@ -1,6 +1,104 @@
-h1{
-    font-size: 50px;
+*{
+    margin: 0;
+    padding: 0;
 }
-.unLinecolor{
-    border-bottom: 3px double blue;
+
+header img{
+    width: 100%;
+}
+
+/* 特色 */
+
+.class1 {   
+    display: flex;
+    justify-content: space-around;
+    width: 80%;
+    margin: 50px auto;
+}
+
+.class1 .box {
+    width: 300px;
+    text-align: center;
+}
+.class1 .box h2 {
+    color :red;
+}
+
+.class1 .box p {
+    color: #888;
+    text-align: center;
+    line-height: 1.5;  /*行距可不加單位，寫數字即可*/
+}
+
+/* 標語 */
+.slogan {
+    text-align: center;
+    color: white;
+    background-color: red;
+    width: 100%;
+    line-height: 50px;
+    /* padding-top: 10px;
+    padding-bottom: 10px; */
+}
+
+/* 推薦課程 */
+.class2 h2{
+    text-align: center;
+    color: green;
+    line-height: 100px;
+}
+
+.class2 .classC {
+    display: flex;
+    justify-content: space-around;
+    width: 80%;
+    margin: 50px auto;
+}
+
+.class2 .classC .box2 {
+    width: 300px;
+    /* 陰影效果:水平 垂直 擴展度 顏色 */
+    box-shadow: 0 0 10px gray;
+    padding: 10px;
+}
+.class2 .classC .box2 img {
+    width: 100%;
+}
+.class2 .classC .box2 h3 {
+    font-size: 20px;
+}
+.class2 .classC .box2 .p-blue {
+    line-height: 1.2;
+    color: rgb(86, 135, 241);
+}
+.class2 .classC .box2 .p-blue { 
+    color: gray;
+}
+.class2 .classC .box2 .span { 
+    color: gray;
+    text-decoration: line-through;
+}
+.class2 .classC .box2 .span { 
+    color: red;
+    font-size: 18px;
+    margin-left: 5px;
+}
+
+.class2 .classC .box2 button {
+    background-color: red;
+    color: white;
+    border: none;
+    width: 100%;
+    line-height: 40px;
+    border-radius: 15%;
+    margin-top: 20px;
+}
+
+/* 頁尾 */
+footer {
+    color: white;
+    background-color: black;
+    line-height: 50px;
+    width: 100%;
+    text-align: center;
 }
