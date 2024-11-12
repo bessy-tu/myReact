@@ -1,56 +1,67 @@
 
-function Component() {
-  return <h1>React</h1>
-}
 
 function App() {
+  // 建立物件變數
+  // const person = {
+  //   s1: {
+  //     name: "同學1",
+  //     age: 10,
+  //   },
+  //   s2: {
+  //     name: "同學2",
+  //     age: 11,
+  //   },
+  //   s3: {
+  //     name: "同學3",
+  //     age: 12,
+  //   }
 
-  // 建立陣列(可以是任何形式的資料 => 元件)
-  // 同一陣列中，key屬性的值不可以重複
-  const listItem = [
-    <Component key="0" />,
-    <Component key="1"/>,
-    <Component key="2"/>,
-  ]
+  // }
 
-  const listBooks = [
-    { bookName:'HTML', id:'book1'},
-    { bookName:'CSS', id:'book2'},
-    { bookName:'JavaScript', id:'book3'},
-  ]
+  // 多筆資料的物件解構 => 方法一(一般寫法)
+  // const {s1,s2,s3} = person;
 
-  // 過濾出陣列中，除了CSS的書本
-  const filterBooks = listBooks.filter((book)=>{
-    // if(book.bookName !== 'CSS'){
-    //   return true
-    // }
+  // 多筆資料的物件解構 => 解構+展開...(其餘運算值)
+  // 解構s1，展開s2,s3
+  // const {s1, ...other} = person
+  // console.log(s1);
+  // console.log(other.s3);
 
-    // 三元運算子的判斷式(只能用在單層判斷)
-    // 判斷式 ?條件成立 :條件不成立 
-    return book.bookName !== 'CSS' ? true : false
-  })
+  const person = {
+    name: "同學1",
+    age:10,
+  }
+
+  // 一般寫法
+  // function showName(obj){
+  //   console.log(obj);
+  //   console.log(obj.name);
+  //   console.log(obj.age);
+  // }
+
+  // 將物件屬性直接解構給函式參數
+  function showName(name, age){
+    console.log(name);
+    console.log(age);
+
+  }
+  showName(person);
 
   return (
-
     <>
-    {/* 使用陣列方法1 */}
-      {listItem}
-      <hr />
-      {/* 使用陣列方法2 => map() => 此方法可以把一個陣列轉換成另一個陣列*/}
-      {
-        listBooks.map((book)=>{
-          return <div key={book.id}>{book.bookName}</div>
-        })       
-      }
-      <hr />
-      {/* 顯示filter()過濾後的陣列資料 */}
-      {
-        filterBooks.map((book)=>{
-          return <div key={book.id}>{book.bookName}</div>
-        })
-      }
+      {/* <div>{`同學1姓名:${s1.name}`}</div>
+      <div>{`同學3姓名:${other.s3.name}`}</div> */}
 
 
+      {/* <div>第一位同學姓名:{s1.name}</div>
+      <div>第一位同學年紀:{s1.age}歲</div>
+      <hr />
+      <div>第二位同學:{s2.name}</div>
+      <div>第二位同學:{s2.age}歲</div>
+      <hr />
+      <div>第三位同學:{s3.name}</div>
+      <div>第三位同學:{s3.age}歲</div> 
+      */}
     </>
   )
 }
