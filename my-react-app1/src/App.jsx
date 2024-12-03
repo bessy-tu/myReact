@@ -1,29 +1,150 @@
-import { useState } from "react"
+import { useEffect } from "react"
+import axios from 'axios';
+
+import './App.css';
+import { FaUmbrella } from "react-icons/fa";
 
 function App() {
-  // 定義變數namem與setName方法
-  const [name, setName] = useState('');
-  const [name2, setName2]=useState('');
 
-  function changeName(e) {
-    setName2(e.target.value);
-  }
+  // useEffect(() => {
+  //   (async () => {
+  //     // const data = await axios.get('./F-C0032-001.json');
+  //     const data = await axios.get();
+  //     // console.log(data);
+  //     const location = data.data.cwaopendata.dataset;
+  //     console.log(location);
+  //   })
+  // }, [])
+
 
   return (
     <>
-      <h2>設計一個輸入名字的欄位,並且即時顯示出來</h2>
-      <hr />
-      {/* <h3>目前文字方塊的內容:{name}</h3> */}
+      <div className="wrip">
+        <h2>36小時天氣預報</h2>
 
-      請輸入姓名1: <input type="text" value={name} onChange={(e) => {
-        //  console.log(e);
-        setName(e.target.value);
-      }} />{name}
-      <br />
+        {/* 一列兩欄 */}
+        <div className="row">
+          {/* 第一欄 */}
+          <div className="col">
+            {/* 卡片樣式 */}
+            <div className="card">
+              {/* 標題 */}
+              <div className="card-title">台北市</div>
+              {/* 內容 */}
+              <div className="card-body">
+                {/* 一列三欄 */}
+                <div className="row2">
+                  {/* 第一欄 */}
+                  <div className="col2">
+                    <p>2日</p>
+                    <p>
+                      上午6:00<br />
+                      ~<br />
+                      下午6:00
+                    </p>
+                    <p>
+                      <img src="./public/weatherIcon/晴時多雲.svg" alt="" />
+                    </p>
+                    <p>晴時多雲</p>
+                    <p><FaUmbrella />10%</p>
+                  </div>
 
-      請輸入姓名2:<input type="text" value={name2} onChange={changeName} /> {name2}
+                  {/* 第二欄 */}
+                  <div className="col2">
+                    <p>2日</p>
+                    <p>
+                      上午6:00<br />
+                      ~<br />
+                      下午6:00
+                    </p>
+                    <p>
+                      <img src="./public/weatherIcon/晴時多雲.svg" alt="" />
+                    </p>
+                    <p>晴時多雲</p>
+                    <p><FaUmbrella />10%</p>
+                  </div>
+
+                  {/* 第三欄 */}
+                  <div className="col2">
+                    <p>2日</p>
+                    <p>
+                      上午6:00<br />
+                      ~<br />
+                      下午6:00
+                    </p>
+                    <p>
+                      <img src="./public/weatherIcon/晴時多雲.svg" alt="" />
+                    </p>
+                    <p>晴時多雲</p>
+                    <p><FaUmbrella />10%</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* 第二欄 */}
+          <div className="col">
+            {/* 卡片樣式 */}
+            <div className="card">
+              {/* 標題 */}
+              <div className="card-title">台北市</div>
+              {/* 內容 */}
+              <div className="card-body">
+                {/* 一列三欄 */}
+                <div className="row2">
+                  {/* 第一欄 */}
+                  <div className="col2">
+                    <p>2日</p>
+                    <p>
+                      上午6:00<br />
+                      ~<br />
+                      下午6:00
+                    </p>
+                    <p>
+                      <img src="./public/weatherIcon/晴時多雲.svg" alt="" />
+                    </p>
+                    <p>晴時多雲</p>
+                    <p><FaUmbrella />10%</p>
+                  </div>
+
+                  {/* 第二欄 */}
+                  <div className="col2">
+                    <p>2日</p>
+                    <p>
+                      上午6:00<br />
+                      ~<br />
+                      下午6:00
+                    </p>
+                    <p>
+                      <img src="./public/weatherIcon/晴時多雲.svg" alt="" />
+                    </p>
+                    <p>晴時多雲</p>
+                    <p><FaUmbrella />10%</p>
+                  </div>
+
+                  {/* 第三欄 */}
+                  <div className="col2">
+                    <p>2日</p>
+                    <p>
+                      上午6:00<br />
+                      ~<br />
+                      下午6:00
+                    </p>
+                    <p>
+                      <img src="./public/weatherIcon/晴時多雲.svg" alt="" />
+                    </p>
+                    <p>晴時多雲</p>
+                    <p><FaUmbrella />10%</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </>
   )
 }
-
 export default App
