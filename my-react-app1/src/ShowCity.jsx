@@ -65,11 +65,12 @@ function showCity() {
                                             </div>
                                         </div>
                                     </div>
-                                    </div>
-                                    </div>                   
-                                )}
-                            )
+                                </div>
                             </div>
-                            </p>
-
+                            </div>              
+                            </p> 
+                        )
+                    
+                    }
+                                  
                                 export default ShowCity
