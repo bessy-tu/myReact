@@ -1,117 +1,71 @@
-import { useState, useMemo } from "react";
+import { createContext, useContext, useState } from "react"
 
 export default function App() {
 
-  const prodData = [
-    {
-      id: 1,
-      title: '蘋果汁',
-      price: 80,
-      imgUrl:'./images/01.jpg',
+  // 建立共用環境區域
+  const userContext = createContext({});
+  // 建立使用者變數
+  const [username, setUsername] = useState('demo');
+  // 建立登入鈕的控制
+  const [islogin, setIslogin] = useState(false);
 
-    },
-    {
-      id: 2,
-      title: '蛋黃酥',
-      price: 100,
-      imgUrl:'./images/03.jpg',
-
-    },
-    {
-      id: 3,
-      title: '飯糰',
-      price: 50,
-      imgUrl:'./images/05.jpg',
-    },
-    {
-      id: 4,
-      title: '牛舌餅',
-      price: 120,
-      imgUrl:'./images/07.jpg',
-    },
-    {
-      id: 5,
-      title: '奶茶',
-      price: 160,
-      imgUrl:'./images/08.jpg',
-    },
-  ];
-
-  // 建立表格元件
-  const ProdTable = (filterProds) => {
+  // 建立登入元件
+  const LoginForm = () => {
+    //因為要被放在共用區，所以要搬到APP元件內
+    // const [username, setUsername] = useState('');
+    // 從共用區UserContext解構出username, setUsername
+    const { username, setUsername } = userContext(UserContext)
     return (
-      <table style={{ width: '500px', marginTop: '20px', }}>
-        <tbody>
-          {
-            filterProds.map((prod) => {
-              return (
-                <tr key={prod.id} >
-                  <td style={{
-                    borderBottom: '1px dashed #ccc',
-                    padding: '5px',
-                    width: '300px',
-                  }}></td>
-                  <td>
-                    <img src={prod.imgUrl} alt="" style={{
-                      width: '100px',
-                      verticalAlign: 'top',
-                    }} /><br/>
-                    {prod.title}
-                  </td>
-                  <td style={{
-                    borderBottom: '1px dashed #ccc',
-                    padding: '5px',
-                    width: '200px',
-                    textAlign: 'right',
-                  }}>{prod.price}</td>
-                </tr>
-              )
-            })
-          }
-        </tbody>
-      </table>
+      <>
+        <label htmlFor="username">使用者名稱</label>
+        <input
+          type="text"
+          id="username"
+          placeholder="請輸入使用者名稱"
+          value={username}
+          onChange={e => setUsername(e.target.value)}
+        />
+        <button type="button" onClick={() => { setIslogin(true) }}>登入</button>
+      </>
     )
   }
 
-  // 陣列變數，預設為元商品陣列的資料
-  const [prods, setProds] = useState(prodData);
-  // 排序變數，預設為遞增
-  const [ascending, setascending] = useState(true);
-  // 搜尋變數
-  const [search, setSearch] = useState('');
+  // 登入後的歡迎元件
+  const Greeting = () => {
+    // 從共用區UserContext取得username
+    const { username } = useContext(userContext);
+    return (
+      <div>
+        Hi, {username}
+      </div>
+    )
+  }
 
-  // 建立排序與搜尋的函式
-  const filterProds = useMemo(() => {
-    return [...prods]
-      .sort((a, b) => {
-        return ascending ? a.price - b.price : b.price - a.price;
-      })
-      .filter((prod) => {
-        return prod.title.match(search);
-      })
-
-  }, [ascending, search]);
+  // 建立一個不同元件來使用username
+  // const ShowName = ()=>{
+  //   const 
+  // }
 
   return (
     <>
-      <h1>useMemo搜尋與排序</h1>
-      <hr style={{ marginBottom: "20px" }} />
-      升降冪 :
-      <input
-        type="checkbox"
-        checked={ascending}
-        onChange={(e) => setascending(e.target.checked)}
-      />
-      <br />
-      搜尋 :
-      <input
-        type="search"
-        value={search}
-        onChange={(e) => setSearch(e.target.value)}
-      />
+      <h1>useContent</h1><hr style={{ marginBottom: "50px" }} />
+      <userContext.Provider value={{ username, setUsername, setIslogin }}>
 
-      {/* 呼叫表格元件 */}
-      <ProdTable filterProds={filterProds} />
+        {/* 
+         <LoginForm />
+        <br />
+        <Greeting />
+         */}
+
+        {/* 將原本的架構改成三元運算子 */}
+
+        {
+          islogin ? <Greeting /> : <LoginForm />
+        }
+      </userContext.Provider>
+
+
+
 
     </>
   )
